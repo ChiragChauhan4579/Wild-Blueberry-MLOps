@@ -1,6 +1,7 @@
 # RTA-MLOps
 
 Tools used in the project:
+
 * Cookiecutter: Data science project structure
 * Data version control (DVC): Version control of the data assets and to make pipeline
 * Github: For code version control
