@@ -17,8 +17,15 @@ Creating a new environment would be better to avoid any issues with dependencies
 To get started with this run these commands:
 
 ```
-git clone https://github.com/ChiragChauhan4579/RTA-MLOps
 python -m venv mlops_stack or conda create -n mlops_stack
 activate the environment using mlops_stack\Scripts\activate or conda activate mlops_stack
 pip install -r requirements.txt
+```
+
+## Creating the project structure with cookiecutter
+
+Run the following command and fill necessary information
+
+```
+cookiecutter https://github.com/drivendata/cookiecutter-data-science
 ```

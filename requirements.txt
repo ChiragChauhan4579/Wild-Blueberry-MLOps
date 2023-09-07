@@ -1,0 +1,8 @@
+cookiecutter
+dvc 
+numpy
+pandas 
+scikit-learn 
+mlflow
+joblib
+fastapi
