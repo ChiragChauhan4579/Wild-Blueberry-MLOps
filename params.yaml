@@ -1,0 +1,30 @@
+raw_data_config: 
+  raw_data_csv: data/raw/WildBlueberryPollinationSimulationData.csv
+  model_var: ['clonesize','honeybee','bumbles','andrena','osmia','MaxOfUpperTRange','MinOfUpperTRange','AverageOfUpperTRange','MaxOfLowerTRange','MinOfLowerTRange','AverageOfLowerTRange','RainingDays','AverageRainingDays','fruitset','fruitmass','seeds','yield']
+  train_test_split_ratio: 0.2
+  target: yield 
+  random_state: 123
+  new_train_data_csv: data/raw/train_new.csv
+
+processed_data_config:
+  train_data_csv: data/processed/wb_train.csv
+  test_data_csv:  data/processed/wb_test.csv
+
+mlflow_config:
+  artifacts_dir: artifacts
+  experiment_name: experiment-1
+  run_name: xgboost
+  registered_model_name: xgboost_model
+  remote_server_uri: http://localhost:8080
+ 
+xgboost: 
+  max_depth: 10
+  n_estimators: 30
+
+model_dir: models/model.joblib
+
+model_webapp_dir: webapp/model_webapp_dir/model.joblib
+
+model_monitor:
+  target_col_name: target
+  monitor_dashboard_html: reports/data_and_target_drift_dashboard.html

@@ -46,4 +46,4 @@ Add the RTA_dataset file to your raw folder
 
 ## Tracking the dataset with DVC
 
-Run this command to track the raw data file `dvc add "data\raw\RTA Dataset.csv"`. Upon completion you will find `RTA Dataset.csv.dvc` file
+Run this command to track the raw data file `dvc add "data\raw\WildBlueberryPollinationSimulationData.csv"`. Upon completion you will find `WildBlueberryPollinationSimulationData.csv.dvc` file
