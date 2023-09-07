@@ -29,3 +29,21 @@ Run the following command and fill necessary information
 ```
 cookiecutter https://github.com/drivendata/cookiecutter-data-science
 ```
+
+Now move inside your directory and push this to your github repository
+```
+git init 
+git add . 
+git commit -m "Adding cookiecutter template"
+git remote add origin <your_github_repo>
+git branch -M main
+git push -u origin main
+```
+
+Add the RTA_dataset file to your raw folder 
+
+*Note* : Comment line 79 '/data/' in gitignore file because now the data is going to be tracked by DVC.
+
+## Tracking the dataset with DVC
+
+Run this command to track the raw data file `dvc add "data\raw\RTA Dataset.csv"`. Upon completion you will find `RTA Dataset.csv.dvc` file
