@@ -14,8 +14,8 @@ Tools used in the project:
 
 To get started with this run these commands:
 
-`
-git clone https://github.com/ChiragChauhan4579/RTA-MLOps \n
+`python
+git clone https://github.com/ChiragChauhan4579/RTA-MLOps 
 a
 `
 
