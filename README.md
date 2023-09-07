@@ -15,6 +15,8 @@ Tools used in the project:
 To get started with this run these commands:
 
 `bash
-git clone https://github.com/ChiragChauhan4579/RTA-MLOps \
+git clone https://github.com/ChiragChauhan4579/RTA-MLOps
+`
+`
 pip install -r requirements.txt
 `
