@@ -1,4 +1,4 @@
-# RTA-MLOps
+# Wild-Blueberry-MLOps
 
 Tools used in the project:
 
@@ -40,7 +40,7 @@ git branch -M main
 git push -u origin main
 ```
 
-Add the RTA_dataset file to your raw folder 
+Add the necessary dataset file to your raw folder 
 
 *Note* : Comment line 79 '/data/' in gitignore file because now the data is going to be tracked by DVC.
 
