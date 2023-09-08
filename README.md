@@ -47,3 +47,12 @@ Add the RTA_dataset file to your raw folder
 ## Tracking the dataset with DVC
 
 Run this command to track the raw data file `dvc add "data\raw\WildBlueberryPollinationSimulationData.csv"`. Upon completion you will find `WildBlueberryPollinationSimulationData.csv.dvc` file
+
+Add dvc storage to dagshub using `dvc remote add path/to_dagshub.dvc`
+
+using `dvc push -r "origin"`
+
+## Scripts and MLflow tracking
+
+Add scripts to src/data and src/models
+

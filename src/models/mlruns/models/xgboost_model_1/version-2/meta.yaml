@@ -1,0 +1,13 @@
+aliases: []
+creation_timestamp: 1694164677616
+current_stage: None
+description: null
+last_updated_timestamp: 1694164677616
+name: xgboost_model_1
+run_id: 627cfda75bff40cca4c07552291b6d10
+run_link: null
+source: file:///C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/mlruns/666653426921102555/627cfda75bff40cca4c07552291b6d10/artifacts/model
+status: READY
+status_message: null
+user_id: null
+version: 2
