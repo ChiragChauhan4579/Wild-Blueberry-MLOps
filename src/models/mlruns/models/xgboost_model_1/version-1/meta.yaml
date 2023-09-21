@@ -1,12 +1,12 @@
 aliases: []
-creation_timestamp: 1694164598682
-current_stage: None
+creation_timestamp: 1695320828121
+current_stage: Staging
 description: null
-last_updated_timestamp: 1694164598682
+last_updated_timestamp: 1695324362751
 name: xgboost_model_1
-run_id: 1dd74312531c4738842d63cccfdfc96a
+run_id: 290a5d5c684749bca16ee7c99fca8d10
 run_link: null
-source: file:///C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/mlruns/666653426921102555/1dd74312531c4738842d63cccfdfc96a/artifacts/model
+source: file:///C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/mlruns/872714289021200779/290a5d5c684749bca16ee7c99fca8d10/artifacts/model
 status: READY
 status_message: null
 user_id: null

@@ -1,11 +1,9 @@
 import joblib
-import dagshub
 import mlflow
 import argparse
 from pprint import pprint
 from train_model import read_params
 from mlflow.tracking import MlflowClient
-from mlflow.entities import ViewType
 
 def log_production_model(config_path):
     config = read_params(config_path)
@@ -13,29 +11,25 @@ def log_production_model(config_path):
     model_name = mlflow_config["registered_model_name"]
     model_dir = config["model_dir"]
 
-    dagshub.init("Wild-Blueberry-MLOps", "ChiragChauhan4579", mlflow=True)
-    mlflow.set_tracking_uri('https://dagshub.com/ChiragChauhan4579/Wild-Blueberry-MLOps.mlflow')
-    MLFLOW_TRACKING_URI = "https://dagshub.com/ChiragChauhan4579/Wild-Blueberry-MLOps.mlflow"
-    client = MlflowClient(tracking_uri=MLFLOW_TRACKING_URI)
+    experiment = mlflow.get_experiment_by_name(mlflow_config["experiment_name"])
 
-    # experiment = client.get_experiment(experiment_id=0)
-    # print("Name: {}".format(experiment.name))
-    # print("Experiment_id: {}".format(experiment.experiment_id))
-    # print("Artifact Location: {}".format(experiment.artifact_location))
-    # print("Tags: {}".format(experiment.tags))
-    # print("Lifecycle_stage: {}".format(experiment.lifecycle_stage))
-
-    runs = client.search_runs(
-        experiment_ids='0',
-        max_results=5,
-        order_by=["metrics.mean_absolute_error ASC"]
+    runs = MlflowClient().search_runs(
+        experiment_ids=experiment.experiment_id,
+        filter_string="",
+        max_results=1,
+        order_by=["metrics.mae ASC"],
     )
 
-    print(runs)
-
     for run in runs:
-        print(f"run id: {run.info.run_id}, mae: {run.data.metrics['mean_absolute_error']:.4f}, \
-            run params: {run.data.params}" )
+        print(f"run id: {run.info.run_id}, mae: {run.data.metrics['mae']:.4f}, run params: {run.data.params}" )
+
+    MlflowClient().transition_model_version_stage(
+        name="xgboost_model_1", version=1, stage="Staging"
+    )
+
+    loaded_model = mlflow.pyfunc.load_model(f"C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/mlruns/{experiment.experiment_id}/{run.info.run_id}/artifacts/model")
+
+    joblib.dump(loaded_model, model_dir)
 
 
 if __name__ == '__main__':

@@ -15,6 +15,7 @@ mlflow_config:
   experiment_name: experiment-1
   run_name: xgboost-2
   registered_model_name: xgboost_model_1
+  remote_server_uri: http://192.168.0.1:5000
  
 xgboost: 
   max_depth: 5
