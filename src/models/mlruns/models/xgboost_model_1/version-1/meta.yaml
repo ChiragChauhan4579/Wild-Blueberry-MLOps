@@ -2,7 +2,7 @@ aliases: []
 creation_timestamp: 1695320828121
 current_stage: Staging
 description: null
-last_updated_timestamp: 1695324362751
+last_updated_timestamp: 1695476778762
 name: xgboost_model_1
 run_id: 290a5d5c684749bca16ee7c99fca8d10
 run_link: null

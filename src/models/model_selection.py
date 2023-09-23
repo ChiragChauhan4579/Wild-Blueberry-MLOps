@@ -27,7 +27,7 @@ def log_production_model(config_path):
         name="xgboost_model_1", version=1, stage="Staging"
     )
 
-    loaded_model = mlflow.pyfunc.load_model(f"C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/mlruns/{experiment.experiment_id}/{run.info.run_id}/artifacts/model")
+    loaded_model = mlflow.pyfunc.load_model(f"C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/mlruns/{experiment.experiment_id}/{run.info.run_id}/artifacts/model")
 
     joblib.dump(loaded_model, model_dir)
 

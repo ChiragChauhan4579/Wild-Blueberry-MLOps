@@ -12,6 +12,8 @@ Tools used in the project:
 * EvidentlyAI: To evaluate and monitor ML models in production
 * Pytest: To implement the unit tests
 
+**Note**: Remember to change paths
+
 Creating a new environment would be better to avoid any issues with dependencies
 
 To get started with this run these commands:
@@ -56,3 +58,30 @@ using `dvc push -r "origin"`
 
 Add scripts to src/data and src/models
 
+In data data loading data(if there is any preprocessing at your end you can add it) else splitting data script are be executed directly
+
+In models training and model selection script is added
+
+From the model selection script the latest model will be saved in models folder of the root directory
+
+## Adding DVC pipeline
+
+Few arguments to look at before running.
+* he -n switch gives the stage a name.
+* The -d switch passes the dependencies to the command.
+* The -o switch defines the outputs of the command.
+* The -M switch defines the metrics of the command
+
+Remember to npt allow tracking your data files by git. If you run below commands you will find errors, so just do the mentioned thing in the error and run again.
+
+`dvc stage add --run --force -n data -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/data/split_data.py -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/data/raw -o C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/data/processed/wb_train.csv -o C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/data/processed/wb_test.csv python C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/data/split_data.py`
+
+`dvc stage add --run --force -n train -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/train_model.py -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/data/processed/wb_train.csv -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/data/processed/wb_test.csv -p xgboost.max_depth -p xgboost.n_estimators python C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/train_model.py  --config=C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/params.yaml`
+
+`dvc stage add --run --force -n evaluate -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/model_selection.py -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/mlruns/872714289021200779 -o C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/models/model.joblib python C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/model_selection.py`
+
+Force is added in the command so if there is error and when you solve it you can force change the yaml file.
+
+This pipeline executes only when the stage if dependencies are changed
+
+To rerun the pipeline run `dvc repro`

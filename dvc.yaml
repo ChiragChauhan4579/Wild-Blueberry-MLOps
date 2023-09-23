@@ -1,0 +1,25 @@
+stages:
+  data:
+    cmd: python C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/data/split_data.py
+    deps:
+    - data\raw
+    - src\data\split_data.py
+    outs:
+    - data\processed\wb_test.csv
+    - data\processed\wb_train.csv
+  train:
+    cmd: python C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/train_model.py
+      --config=C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/params.yaml
+    deps:
+    - data\processed\wb_test.csv
+    - data\processed\wb_train.csv
+    - src\models\train_model.py
+    params:
+    - xgboost.max_depth
+    - xgboost.n_estimators
+  evaluate:
+    cmd: python C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/model_selection.py
+    deps:
+    - src\models\model_selection.py
+    outs:
+    - models\model.joblib

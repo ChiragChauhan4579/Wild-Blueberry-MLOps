@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/mlruns/304566483199548849/2305f3b542724c9a8d8fc21ba3147af3/artifacts
+end_time: 1695476873719
+entry_point_name: ''
+experiment_id: '304566483199548849'
+lifecycle_stage: active
+run_id: 2305f3b542724c9a8d8fc21ba3147af3
+run_name: xgboost-2
+run_uuid: 2305f3b542724c9a8d8fc21ba3147af3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1695476868433
+status: 3
+tags: []
+user_id: Chirag

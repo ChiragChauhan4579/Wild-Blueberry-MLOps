@@ -1,0 +1,55 @@
+schema: '2.0'
+stages:
+  data:
+    cmd: python C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/data/split_data.py
+    deps:
+    - path: data\raw
+      hash: md5
+      md5: 2cee4722ac25a3ef37c7cd2150528333.dir
+      size: 87547
+      nfiles: 4
+    - path: src\data\split_data.py
+      hash: md5
+      md5: c0affe356a1a7d060f5b3b0824077671
+      size: 1439
+    outs:
+    - path: data\processed\wb_test.csv
+      hash: md5
+      md5: 0bf61ca31fdc3d3fe8fc2ac0ae577c9b
+      size: 17729
+    - path: data\processed\wb_train.csv
+      hash: md5
+      md5: 53a733b37ea7104561c7142d0e87926a
+      size: 69859
+  train:
+    cmd: python C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/train_model.py
+      --config=C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/params.yaml
+    deps:
+    - path: data\processed\wb_test.csv
+      hash: md5
+      md5: 0bf61ca31fdc3d3fe8fc2ac0ae577c9b
+      size: 17729
+    - path: data\processed\wb_train.csv
+      hash: md5
+      md5: 53a733b37ea7104561c7142d0e87926a
+      size: 69859
+    - path: src\models\train_model.py
+      hash: md5
+      md5: a653a9fa07777c595c2cfbe7f7da7262
+      size: 2483
+    params:
+      params.yaml:
+        xgboost.max_depth: 5
+        xgboost.n_estimators: 30
+  evaluate:
+    cmd: python C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/model_selection.py
+    deps:
+    - path: src\models\model_selection.py
+      hash: md5
+      md5: 49545b8796fc4e5d5285df2fc48685bc
+      size: 1386
+    outs:
+    - path: models\model.joblib
+      hash: md5
+      md5: 634be4b2dbfc0086191dd8124ee2b404
+      size: 71804
