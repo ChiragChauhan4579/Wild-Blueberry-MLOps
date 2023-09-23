@@ -1,4 +1,4 @@
-# Wild-Blueberry-MLOps
+# Wild-Blueberry-MLOps (MLflow + DVC) [Adding Evidently, Github actions, FastAPI deployment]
 
 Tools used in the project:
 
@@ -85,3 +85,9 @@ Force is added in the command so if there is error and when you solve it you can
 This pipeline executes only when the stage if dependencies are changed
 
 To rerun the pipeline run `dvc repro`
+
+## Future updates
+
+1. Creating an API with Flask/FastAPI
+2. Deploy on Render with CI/CD with GitHub actions
+3. Add Evidently for monitoring
