@@ -74,11 +74,21 @@ Few arguments to look at before running.
 
 Remember to npt allow tracking your data files by git. If you run below commands you will find errors, so just do the mentioned thing in the error and run again.
 
+`dvc stage add --run --force -n data -d split_data.py -d data/raw -o data/processed/wb_train.csv -o data/processed/wb_test.csv python src/data/split_data.py`
+
+`dvc stage add --run --force -n train -d src/models/train_model.py -d data/processed/wb_train.csv -d data/processed/wb_test.csv -p xgboost.max_depth -p xgboost.n_estimators python src/models/train_model.py  --config=params.yaml`
+
+`dvc stage add --run --force -n evaluate -d src/models/model_selection.py -d src/models/mlruns/872714289021200779 -o models/model.joblib python src/models/model_selection.py`
+
+**Note:** If this gives around path try giving full paths like this
+
 `dvc stage add --run --force -n data -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/data/split_data.py -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/data/raw -o C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/data/processed/wb_train.csv -o C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/data/processed/wb_test.csv python C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/data/split_data.py`
 
 `dvc stage add --run --force -n train -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/train_model.py -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/data/processed/wb_train.csv -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/data/processed/wb_test.csv -p xgboost.max_depth -p xgboost.n_estimators python C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/train_model.py  --config=C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/params.yaml`
 
 `dvc stage add --run --force -n evaluate -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/model_selection.py -d C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/mlruns/872714289021200779 -o C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/models/model.joblib python C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/src/models/model_selection.py`
+
+
 
 Force is added in the command so if there is error and when you solve it you can force change the yaml file.
 
