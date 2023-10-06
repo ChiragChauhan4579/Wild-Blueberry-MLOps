@@ -8,6 +8,9 @@ import pandas as pd
 from urllib.parse import urlparse
 from xgboost import XGBRegressor
 from sklearn.metrics import mean_absolute_error,mean_squared_error
+from evidently.report import Report
+from evidently.metric_preset import DataDriftPreset
+from evidently.metrics import *
 
 def read_params(config_path):
     with open(config_path) as yaml_file:
@@ -60,6 +63,24 @@ def train_and_evaluate(config_path):
                 model, 
                 "model", 
                 registered_model_name=mlflow_config["registered_model_name"])
+        
+        df_ref = train_x.copy(deep=True)
+        df_curr = test_x.copy(deep=True)
+
+        df_ref['target'] = train_y
+        df_ref['prediction'] = train_y.values
+
+        df_curr['target'] = test_y
+        df_curr['prediction'] = y_pred
+
+        data_drift_report = Report(metrics=[
+            DataDriftPreset(),
+        ])
+
+        data_drift_report.run(reference_data=df_ref, current_data=df_curr)
+        data_drift_report.save_html("C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/reports/report.html")
+        mlflow.log_artifact("C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/reports/report.html")
+
  
 if __name__=="__main__":
     args = argparse.ArgumentParser()

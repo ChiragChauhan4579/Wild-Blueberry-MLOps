@@ -18,7 +18,7 @@ mlflow_config:
   remote_server_uri: http://192.168.0.1:5000
  
 xgboost: 
-  max_depth: 5
+  max_depth: 7
   n_estimators: 30
 
 model_dir: C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/models/model.joblib

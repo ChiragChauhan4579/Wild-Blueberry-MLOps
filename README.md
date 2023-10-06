@@ -1,4 +1,4 @@
-# Wild-Blueberry-MLOps (MLflow + DVC) [Adding Evidently, Github actions, FastAPI deployment]
+# Wild-Blueberry-MLOps (MLflow + DVC + Evidently) [Adding Github actions, FastAPI deployment]
 
 Tools used in the project:
 
@@ -67,7 +67,7 @@ From the model selection script the latest model will be saved in models folder 
 ## Adding DVC pipeline
 
 Few arguments to look at before running.
-* he -n switch gives the stage a name.
+* The -n switch gives the stage a name.
 * The -d switch passes the dependencies to the command.
 * The -o switch defines the outputs of the command.
 * The -M switch defines the metrics of the command
@@ -100,4 +100,3 @@ To rerun the pipeline run `dvc repro`
 
 1. Creating an API with Flask/FastAPI
 2. Deploy on Render with CI/CD with GitHub actions
-3. Add Evidently for monitoring

@@ -23,14 +23,15 @@ def log_production_model(config_path):
     for run in runs:
         print(f"run id: {run.info.run_id}, mae: {run.data.metrics['mae']:.4f}, run params: {run.data.params}" )
 
-    MlflowClient().transition_model_version_stage(
-        name="xgboost_model_1", version=1, stage="Staging"
-    )
+    # MlflowClient().transition_model_version_stage(
+    #     name="xgboost_model_1", version=1, stage="Staging"
+    # )
 
     loaded_model = mlflow.pyfunc.load_model(f"C:/Users/Chirag/Desktop/Wild-Blueberry-MLOps/mlruns/{experiment.experiment_id}/{run.info.run_id}/artifacts/model")
 
     joblib.dump(loaded_model, model_dir)
 
+# https://docs.databricks.com/en/_extras/notebooks/source/mlflow/mlflow-model-registry-example.html
 
 if __name__ == '__main__':
     args = argparse.ArgumentParser()
